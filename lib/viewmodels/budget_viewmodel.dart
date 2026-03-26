@@ -5,6 +5,7 @@ import 'package:expense_tracker/services/budget_service.dart';
 part 'budget_viewmodel.g.dart';
 
 @riverpod
+// ignore: deprecated_member_use_from_same_package
 BudgetService budgetService(BudgetServiceRef ref) => BudgetService();
 
 @riverpod

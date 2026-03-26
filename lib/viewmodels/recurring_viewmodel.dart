@@ -5,6 +5,7 @@ import 'package:expense_tracker/services/recurring_service.dart';
 part 'recurring_viewmodel.g.dart';
 
 @riverpod
+// ignore: deprecated_member_use_from_same_package
 RecurringService recurringService(RecurringServiceRef ref) => RecurringService();
 
 @riverpod
