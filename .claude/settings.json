@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "dart analyze lib/ 2>&1 | head -30"
+          }
+        ]
+      }
+    ]
+  }
+}
