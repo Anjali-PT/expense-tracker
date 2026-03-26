@@ -1,13 +1,33 @@
 Create minimal MVVM files for a new feature named "$ARGUMENTS".
 
-Create the following files (replace `feature` with the feature name in snake_case):
+## Rules
+- Create ONLY the 3 files listed below — nothing extra
+- Follow existing code patterns in the project
+- Use `@JsonSerializable()` for models, `@riverpod` for viewmodels
+- Suppress `deprecated_member_use_from_same_package` on functional provider Ref types
+- Do NOT add routes — user wires those up via `/add-route`
+- Do NOT create services or repositories — user adds those via `/add-service` or `/add-repo`
 
-1. `lib/models/{feature}.dart` — Data class with `@JsonSerializable()`, `fromJson`, `toJson`, `copyWith`. Include `part '{feature}.g.dart'`.
+## Files to create (replace `{feature}` with snake_case name)
 
-2. `lib/views/{feature}_screen.dart` — `ConsumerWidget` with a `Scaffold`, `AppBar` with the feature title, and a placeholder body.
+### 1. `lib/models/{feature}.dart`
+- `@JsonSerializable()` class with `id` (String) + sensible fields inferred from name
+- `part '{feature}.g.dart'`
+- `fromJson`, `toJson`, `copyWith`
 
-3. `lib/viewmodels/{feature}_viewmodel.dart` — `@riverpod` annotated `Notifier` class with an empty list as initial state and basic `add`/`remove` methods. Include `part '{feature}_viewmodel.g.dart'`.
+### 2. `lib/views/{feature}_screen.dart`
+- `ConsumerWidget` with `Scaffold`, `AppBar` titled with feature name
+- Unique `heroTag` on any FAB (use `'{feature}_fab'`)
+- Placeholder body
 
-After creating the files, run: `dart run build_runner build --delete-conflicting-outputs`
+### 3. `lib/viewmodels/{feature}_viewmodel.dart`
+- `@riverpod` annotated `Notifier` with `Future<List<{Model}>>` return type
+- `part '{feature}_viewmodel.g.dart'`
+- Methods: `build()`, `add()`, `remove()`
 
-Do NOT add a route to `router.dart` — the user will wire it up manually.
+## After creating files
+```
+dart run build_runner build --delete-conflicting-outputs
+dart analyze lib/
+```
+Verify zero issues before finishing.

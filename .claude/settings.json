@@ -6,7 +6,17 @@
         "hooks": [
           {
             "type": "command",
-            "command": "dart analyze lib/ 2>&1 | head -30"
+            "command": "cd /Users/wac/Documents/expense_tracker && dart analyze lib/ 2>&1 | head -30"
+          }
+        ]
+      }
+    ],
+    "PostCommit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd /Users/wac/Documents/expense_tracker && flutter test 2>&1 | tail -5"
           }
         ]
       }
